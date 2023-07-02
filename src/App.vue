@@ -1,17 +1,40 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderComp></HeaderComp>
+
+    <ol>
+      <ul v-for="product in products" :key="product.id">
+        <ProductDetails :product="product"></ProductDetails>
+      </ul>
+    </ol>
+
+<FooterComp></FooterComp>
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ProductDetails from './components/ProductDetails.vue';
+import HeaderComp from './components/HeaderComp.vue';
+import FooterComp from './components/FooterComp.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    ProductDetails,
+    HeaderComp,
+    FooterComp
+},
+  data() {
+    return {
+      products: [
+        { name: 'Рубашка', price: 50, available: true },
+        { name: 'Галстук', price: 10, available: true },
+        { name: 'Джинсы', price: 70, available: false },
+        { name: 'Ботинки', price: 100, available: false },
+        { name: 'Пиджак', price: 30, available: true },
+      ]
+    };
   }
 }
 </script>
