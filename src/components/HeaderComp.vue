@@ -2,7 +2,7 @@
     <!-- header -->
     <div class="header center">
         <div class="header_logo">
-            <img :src=imgSrc :alt=imgAlt>
+            <img :src="imgSrc" :alt="imgAlt">
             <a :href=logoLink> {{ logoText }}</a>
         </div>
         <div class="header_menubar">
@@ -20,8 +20,8 @@ export default {
 
     data() {
         return {
-            imgSrc: '../assets/Logo.svg',
-            imgAlt: 'logo',
+            imgSrc: require('../assets/Logo.svg'),
+            imgAlt: 'logotip',
             logoLink: '#',
             logoText: 'Interno',
             menulinks: [

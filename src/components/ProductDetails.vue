@@ -1,25 +1,23 @@
 <template>
     <div>
-
         <h2> {{ product.name }}</h2>
         <p>Цена: {{ formattedPrice }}</p>
-        <template>
-            <div>
-                <p v-if="product.available">Available</p>
-                <p v-else>Out of stock</p>
-            </div>
-        </template>
+        <p>{{ product.available ? 'Available' : 'Out of stock' }}</p>
     </div>
 </template>
 
 <script>
 export default {
     name: 'ProductDetails',
-    props: {
+   props: {
         product: {
-            name: String,
-            price: Number,
-            available: Boolean
+            type: Object,
+            required: true,
+            default: () => ({
+                name: '',
+                price: 0,
+                available: false
+            })
         }
     },
     data() {
