@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <HeaderComp></HeaderComp>
+    <p> добавили на удаленном репозитории </p>
 
     <ol>
       <ul v-for="product in products" :key="product.id">
