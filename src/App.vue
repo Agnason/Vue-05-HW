@@ -1,41 +1,48 @@
 <template>
-  <div id="app">
-    <HeaderComp></HeaderComp>
-    <p> добавили на удаленном репозитории </p>
+  <div>
 
-    <ol>
-      <ul v-for="product in products" :key="product.id">
-        <ProductDetails :product="product"></ProductDetails>
-      </ul>
-    </ol>
-
-<FooterComp></FooterComp>
+    <div id="app">
+      <HeaderComp></HeaderComp>
+      <button @click="currentTab = nameButton" v-for="nameButton in nameButtons" :key="nameButton.id">
+        {{ nameButton }}
+      </button>
+      <component :is="changeTabs"></component>
+      <FooterComp></FooterComp>
+    </div>
 
   </div>
 </template>
 
 <script>
-import ProductDetails from './components/ProductDetails.vue';
+
 import HeaderComp from './components/HeaderComp.vue';
 import FooterComp from './components/FooterComp.vue';
+import ChangeBedroom from './components/ChangeBedroom.vue';
+import ChangeKitchen from './components/ChangeKitchen.vue';
+import ChangeBathroom from './components/ChangeBathroom.vue';
+import ChangeLivingArea from './components/ChangeLivingArea.vue';
+
 
 export default {
   name: 'App',
   components: {
-    ProductDetails,
     HeaderComp,
-    FooterComp
-},
+    FooterComp,
+    ChangeBedroom,
+    ChangeKitchen,
+    ChangeBathroom,
+    ChangeLivingArea
+  },
   data() {
     return {
-      products: [
-        { name: 'Рубашка', price: 50, available: true },
-        { name: 'Галстук', price: 10, available: true },
-        { name: 'Джинсы', price: 70, available: false },
-        { name: 'Ботинки', price: 100, available: false },
-        { name: 'Пиджак', price: 30, available: true },
-      ]
+      nameButtons: ['Bathroom', 'Bedroom', 'Kitchen', 'LivingArea'],
+      currentTab: 'Bedroom'
     };
+  },
+  computed: {
+    changeTabs() {
+      return `Change${this.currentTab}`;
+    }
   }
 }
 </script>
